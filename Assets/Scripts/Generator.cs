@@ -11,8 +11,15 @@ public class Generator : MonoBehaviour
     private float maxSpawnInterval = 2f; // Intervalo máximo de tiempo entre instancias
     public float spawnDistance = 0f; // Distancia delante del generador donde aparecerán los objetos
 
+    public float movementSpeed = 30.0f; // Velocidad del movimiento
+    private float amplitude = 2f; // Amplitud del movimiento
+
+    private Vector3 startPosition;
+    private float timeCounter = 0.0f;
+
     private void Start()
     {
+        startPosition = transform.position;
         // Cargar todos los prefabs desde las rutas especificadas y almacenarlos en el diccionario
         foreach (string path in carPrefabPaths)
         {
@@ -29,6 +36,20 @@ public class Generator : MonoBehaviour
 
         // Iniciar la generación de objetos con un intervalo aleatorio inicial
         SpawnCar();
+    }
+
+    private void Update()
+    {
+        timeCounter += Time.deltaTime * movementSpeed;
+
+        // Movimiento de arriba a abajo
+        float yMovement = Mathf.Sin(timeCounter) * amplitude;
+
+        // Movimiento de izquierda a derecha
+        float xMovement = Mathf.Cos(timeCounter) * amplitude;
+
+        // Actualiza la posición del objeto
+        transform.position = startPosition + new Vector3(xMovement, yMovement, xMovement);
     }
 
     private void SpawnCar()

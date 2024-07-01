@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5073838081950301171}
   - component: {fileID: 7884522057621927415}
   - component: {fileID: 2093923756790254689}
-  - component: {fileID: 4105529778658929073}
   - component: {fileID: 202242270110407033}
   m_Layer: 0
   m_Name: generador1
@@ -85,21 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4105529778658929073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694365214066854019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2c6e620a037e24ab8693bb0a91b03c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carPrefabPath: car
-  spawnInterval: 2
-  spawnDistance: 2
 --- !u!65 &202242270110407033
 BoxCollider:
   m_ObjectHideFlags: 0

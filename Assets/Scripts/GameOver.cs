@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
     // Start is called before the first frame update
 
     AudioSource fuenteAudio;
+    public AudioSource fuenteAudioCoin;
+    public Text coinText;
+    private float coins = 0f;
     AudioSource music;
 
     void Start()
@@ -49,6 +53,15 @@ public class GameOver : MonoBehaviour
         if (other.gameObject.CompareTag("ene"))
         {
             StartCoroutine(WaitOneSecond());
+        }
+
+        if (other.gameObject.CompareTag("coin"))
+        {
+            fuenteAudioCoin.Play();
+            coins = coins + 1;
+            Debug.Log(coins);
+            coinText.text = coins.ToString();
+            
         }
     }
 }

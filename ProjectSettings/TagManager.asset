@@ -8,6 +8,7 @@ TagManager:
   - enemigo
   - ene
   - Ground
+  - coin
   layers:
   - Default
   - TransparentFX
