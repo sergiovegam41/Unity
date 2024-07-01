@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider capsuleCollider; // Referencia al CapsuleCollider
 
+    public Text timerText; // Texto de UI para mostrar el temporizador
+    private float timeElapsed;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
         hips = GameObject.Find("player");
         capsuleCollider = GetComponent<CapsuleCollider>();
         targetFOV = virtualCamera.m_Lens.FieldOfView;
+        timeElapsed = 0f;
     }
 
     // Update is called once per frame
@@ -76,6 +83,9 @@ public class PlayerController : MonoBehaviour
 
         // Suavizar la transición de FOV
         virtualCamera.m_Lens.FieldOfView = Mathf.SmoothDamp(virtualCamera.m_Lens.FieldOfView, targetFOV, ref fovVelocity, fovSmoothTime);
+
+        timeElapsed += Time.deltaTime;
+        DisplayTime(timeElapsed);
     }
 
     private void Jump()
@@ -116,5 +126,16 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isGrounded", isGrounded);
             targetFOV = 40; // Cambiar FOV objetivo a 40 cuando está en el suelo
         }
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1; // Opcional, si quieres ajustar el tiempo mostrado
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        float milliseconds = (timeToDisplay % 1) * 1000;
+
+        timerText.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
 }
