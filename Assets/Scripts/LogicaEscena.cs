@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class LogicaEscena : MonoBehaviour
 {
-    private float velocidadRotacionY = 0.02f; // Velocidad de rotación en el eje Y
-    private float velocidadRotacionX = 0.02f; // Velocidad de rotación en el eje X
-    private Vector3 posicionInicial; // Posición inicial de la cámara
+    private float velocidadRotacionY = 0.02f; // Velocidad de rotaciï¿½n en el eje Y
+    private float velocidadRotacionX = 0.02f; // Velocidad de rotaciï¿½n en el eje X
+    private Vector3 posicionInicial; // Posiciï¿½n inicial de la cï¿½mara
 
     void Start()
     {
-        posicionInicial = transform.position;
     }
 
     void Update()
     {
 
-        // Rotación automática de la cámara
-        float rotacionY = Mathf.Sin(Time.time * velocidadRotacionY) * 360f; // Rotación en Y
-        float rotacionX = Mathf.Cos(Time.time * velocidadRotacionX) * 360f; // Rotación en X
+        // Rotaciï¿½n automï¿½tica de la cï¿½mara
+        float rotacionY = Mathf.Sin(Time.time * velocidadRotacionY) * 360f; // Rotaciï¿½n en Y
+        float rotacionX = Mathf.Cos(Time.time * velocidadRotacionX) * 360f; // Rotaciï¿½n en X
 
         transform.rotation = Quaternion.Euler(rotacionX, rotacionY, 0f);
     }
